@@ -2,31 +2,31 @@
 #include <cstring>
 using namespace std;
 
-class DynamicTable
+class DynamicArray
 {
 	int n;
 	int *table;
 public:
-	DynamicTable(int _n)
+	DynamicArray(int _n)
 	{
 		int i=0;
 		n=_n;
-		table = new int[n];
+		array = new int[n];
 		for(i=0; i<n; i++)
 		{
-			table[i]=0;
+			array[i]=0;
 		}
 	}
-	~DynamicTable()
+	~DynamicArray()
 	{
-		delete table;
+		delete array;
 	}
 	void Print()
 	{
 		int i=0;
 		while (i<n)
 		{
-			cout<<table[i++]<<" ";
+			cout<<array[i++]<<" ";
 		}
 		cout<<endl;
 	}
@@ -52,69 +52,69 @@ public:
 };
 
 
-void DynamicTable::AddAnElement(int a)
+void DynamicArray::AddAnElement(int a)
 {
 	int i=0;
-	while(table[i]!=0)
+	while(array[i]!=0)
 	{
 		i++;
 	}
 	if(i<n)
 	{
-		table[i]=a;
+		array[i]=a;
 	}
 	else
 	{
-		int *table2 = new int [n+1];
+		int *array2 = new int [n+1];
 		i=0;
 		while(i<n)
 		{
-			table2[i] = table[i];
+			array2[i] = array[i];
 			i++;
 		}
-		table2[i]=a;
-		table=table2;
+		array2[i]=a;
+		array=array2;
 		n++;
 	}
 }
 
 int main()
 {
-DynamicTable new_tab(10);
+DynamicArray new_arr(10);
   int el=5, i=0;
 
   // n=10
   clock_t start = clock();
   for(i=0; i<10; i++)
     {
-      new_tab.AddAnElement(el);
+      new_arr.AddAnElement(el);
     }
   //new_tab.Print();
   clock_t stop = clock();
   cout<<endl<<"czas dla n=10: "<<(int)(stop-start)<<endl;
 
   // n=1000
-  DynamicTable new_tab2(10);
+  DynamicArray new_arr2(10);
   start = clock();
   for(i=0; i<1000; i++)
     {
-      new_tab2.AddAnElement(el);
+      new_arr2.AddAnElement(el);
     }
   stop = clock();
   cout<<endl<<"czas dla n=10^3: "<<(int)(stop-start)<<endl;
 
   // n=10^5
-  DynamicTable new_tab3(10);
+  DynamicArray new_arr3(10);
   start = clock();
   for(i=0; i<100000; i++)
     {
-      new_tab3.AddAnElement(el);
+      new_arr3.AddAnElement(el);
     }
   stop = clock();
   cout<<endl<<"czas dla n=10^5: "<<(int)(stop-start)<<endl;
 
   // n=10^6
-  DynamicTable new_tab4(10);
+  DynamicArray new_arr4(10);
   start = clock();
   for(i=0; i<1000000; i++)
     {
@@ -128,7 +128,7 @@ DynamicTable new_tab(10);
   start = clock();
   for(i=0; i<1000000000; i++)
     {
-      new_tab5.AddAnElement(el);
+      new_arr5.AddAnElement(el);
     }
   stop = clock();
   cout<<endl<<"czas dla n=10^9: "<<(int)(stop-start)<<endl;
