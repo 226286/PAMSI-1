@@ -4,9 +4,7 @@
 class DynamicArray
 {
 	private:
-		void PowiekszTablice();
-		void PomniejszTablice();
-		void AktualnyStan();
+
 	public:
 		DynamicArray();
 		~DynamicArray();
