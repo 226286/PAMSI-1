@@ -1,24 +1,22 @@
 #ifndef DynamicArray_HH
 #define DynamicArray_HH
 
+class Stash 
+{
+private:
+	int size;					// Size of each space
+    int quantity;				// Number of storage spaces
+    int next;					// Next empty space
+    unsigned char* storage;		// Dynamically allocated array of bytes
+    void inflate(int increase);
+public:
+    Stash(int size, int initQuantity = 0);
+    ~Stash();
+    int add(void* element);
+    void* fetch(int index);
+    int count();
 
-    //: C04:CppLib.h
-    // C-like library converted to C++
-
-    struct Stash {
-      int size;      // Size of each space
-      int quantity;  // Number of storage spaces
-      int next;      // Next empty space
-       // Dynamically allocated array of bytes:
-      unsigned char* storage;
-      // Functions!
-      void initialize(int size);
-      void cleanup();
-      int add(const void* element);
-      void* fetch(int index);
-      int count();
-      void inflate(int increase);
-    }; ///:~
+};
 
 
 

@@ -8,16 +8,17 @@
     using namespace std;
     // Quantity of elements to add
     // when increasing storage:
-    const int increment = 100;
+    const int increment = 10;
 
-    void Stash::initialize(int sz) {
-      size = sz;
-      quantity = 0;
-      storage = 0;
-      next = 0;
-    }
+    Stash::Stash(int sz, int initQuantity) {
+	  size = sz;
+	  quantity = 0;
+	  next = 0;
+	  storage = 0;
+	  inflate(initQuantity);
+	}
 
-    int Stash::add(const void* element) {
+    int Stash::add(void* element) {
       if(next >= quantity) // Enough space left?
         inflate(increment);
       // Copy element into storage,
@@ -32,7 +33,7 @@
 
     void* Stash::fetch(int index) {
       // Check index boundaries:
-      assert(0 <= index);
+      //assert(0 <= index);
       if(index >= next)
         return 0; // To indicate the end
       // Produce pointer to desired element:
@@ -44,7 +45,7 @@
     }
 
     void Stash::inflate(int increase) {
-      assert(increase > 0);
+      //assert(increase > 0);
       int newQuantity = quantity + increase;
       int newBytes = newQuantity * size;
       int oldBytes = quantity * size;
@@ -56,7 +57,7 @@
       quantity = newQuantity;
     }
 
-    void Stash::cleanup() {
+    Stash::~Stash() {
       if(storage != 0) {
         cout << "freeing storage" << endl;
         delete []storage;
