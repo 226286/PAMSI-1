@@ -14,26 +14,39 @@ int main()
 {
 	TimeCounter stoper;
 	DynamicArray tablicaint(sizeof(int));
+	long pomiary[10];
+	ofstream file;
 	
+	for (int j = 0; j < 10; j++)
+	{
+		stoper.startClock();
+		
 	// zwiekszanie tablicy o 1
-	stoper.startClock();
-    for(int i = 0; i < 1000; i++)
-    {
-		tablicaint.AddNewElement(&i, increment);
-	}
-	stoper.stopClock();
-	tablicaint.Print();
-	stoper.getElapsedTime();
-	
+		for(int i = 0; i < 1000; i++)
+		{
+			tablicaint.AddNewElement(&i, increment);
+		}
+
 	// dwukrotne zwiekszanie tablicy
-/*	stoper.startClock();
-    for(int i = 0; i < 10; i++)
-    {
-		tablicaint.AddNewElement(&i, tablicaint.NumberOfElements());
+		/*
+		for(int i = 0; i < 10; i++)
+		{
+			tablicaint.AddNewElement(&i, tablicaint.NumberOfElements());
+		}
+		*/
+		
+		stoper.stopClock();
+		tablicaint.Print();
+		stoper.printElapsedTime();
+		pomiary[j]=stoper.getElapsedTime();
 	}
-	stoper.stopClock();
-	tablicaint.Print();
-	stoper.getElapsedTime();*/
+	
+	file.open("pomiary.txt");
+	for(int j=0; j<10; j++)
+	{
+		file << pomiary[j]/1000.0 << endl;
+	}
+	file.close();
 	
     return 0;
 }

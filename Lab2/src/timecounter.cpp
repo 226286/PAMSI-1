@@ -36,7 +36,12 @@ void TimeCounter::stopClock()
 	stop=realtime;
 }
 
-void TimeCounter::getElapsedTime()
+long TimeCounter::getElapsedTime()
 {
-	cout<<endl<<"czas [s]: "<<(stop-start)/1000.0 <<endl;
+	return (stop-start);
+}
+
+void TimeCounter::printElapsedTime()
+{
+	cout<<endl<<"czas [s]: "<<getElapsedTime()/1000.0<<endl;
 }

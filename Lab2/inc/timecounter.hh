@@ -12,7 +12,8 @@ class TimeCounter
 	public:
 		void startClock();
 		void stopClock();
-		void getElapsedTime();	
+		long getElapsedTime();	
+		void printElapsedTime();
 };
 
 #endif
