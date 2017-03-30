@@ -5,8 +5,10 @@
 class TimeCounter
 {
 	private:
-		clock_t start;
-		clock_t stop;
+		//clock_t start;
+		//clock_t stop;
+		long start;
+		long stop;
 	public:
 		void startClock();
 		void stopClock();

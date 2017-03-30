@@ -2,7 +2,7 @@
 #include <iostream>
 using namespace std;
 
-const int increment = 10;
+const int increment_by = 100;
 
 DynamicArray::DynamicArray(int sz, int initialquantity)
 {
@@ -14,6 +14,22 @@ DynamicArray::DynamicArray(int sz, int initialquantity)
 }
 
 int DynamicArray::AddNewElement(void* element)
+{
+	if(next >= quantity)
+	{
+		EnlargeAnArray(increment_by);
+	}
+	int startbytes = next * size;
+	unsigned char* newelement = (unsigned char*)element;
+	for(int i = 0; i < size; i++)
+	{
+		storage[startbytes + i] = newelement[i];
+	}
+	next++;
+	return(next - 1);
+}
+
+int DynamicArray::AddNewElement(void* element, int increment)
 {
 	if(next >= quantity)
 	{

@@ -14,6 +14,7 @@ public:
     DynamicArray(int size, int initialquantity = 0);
     ~DynamicArray();
     int AddNewElement(void* element);
+    int AddNewElement(void* element, int increment);
     void* GetAnElement(int index);
     int NumberOfElements();
 	void Print();

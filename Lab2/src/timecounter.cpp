@@ -1,6 +1,8 @@
-#include<iostream>
-#include<ctime>
-#include<cstdlib>
+#include <iostream>
+#include <time.h>
+#include <sys/time.h>
+#include <ctime>
+#include <cstdlib>
 #include "../inc/timecounter.hh"
 
 using namespace std;
@@ -8,15 +10,33 @@ using namespace std;
 
 void TimeCounter::startClock()
 {
-	start=clock();
+	struct timeval timeofday;
+	
+	gettimeofday(&timeofday, NULL);
+	
+	long realtime = timeofday.tv_usec;
+	
+	realtime /= 1000; // Convert from micro seconds (10^-6) to milliseconds (10^-3)
+	realtime += (timeofday.tv_sec * 1000); // Adds the seconds (10^0) after converting them to milliseconds (10^-3)
+
+	start=realtime;
 }
 
 void TimeCounter::stopClock()
 {
-	stop=clock();
+	struct timeval timeofday;
+
+	gettimeofday(&timeofday, NULL);
+
+	long realtime = timeofday.tv_usec;
+	
+	realtime /= 1000; // Convert from micro seconds (10^-6) to milliseconds (10^-3)
+	realtime += (timeofday.tv_sec * 1000); // Adds the seconds (10^0) after converting them to milliseconds (10^-3)
+
+	stop=realtime;
 }
 
 void TimeCounter::getElapsedTime()
 {
-	cout<<endl<<"czas: "<<(int)(stop-start)<<endl;
+	cout<<endl<<"czas [s]: "<<(stop-start)/1000.0 <<endl;
 }
