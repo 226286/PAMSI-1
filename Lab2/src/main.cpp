@@ -42,10 +42,13 @@ int main()
 	}
 	
 	file.open("pomiary.txt");
+	long srednia=0;
 	for(int j=0; j<10; j++)
 	{
 		file << pomiary[j]/1000.0 << endl;
+		srednia += pomiary[j];
 	}
+	file << srednia/1000.0/10<<endl;
 	file.close();
 	
     return 0;
