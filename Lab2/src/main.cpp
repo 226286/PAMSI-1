@@ -41,7 +41,7 @@ int main()
 		pomiary[j]=stoper.getElapsedTime();
 	}
 	
-	file.open("pomiary.txt");
+	file.open("pomiary.csv");
 	long srednia=0;
 	for(int j=0; j<10; j++)
 	{
