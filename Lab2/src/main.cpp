@@ -11,12 +11,15 @@ using namespace std;
 
 int main() 
 {
-	Stash intStash(sizeof(int));
+	TimeCounter stoper;
+	DynamicArray tablicaint(sizeof(int));
+	stoper.startClock();
     for(int i = 0; i < 100; i++)
-		intStash.add(&i);
-	for(int j = 0; j < intStash.count(); j++)
-		cout << "intStash.fetch(" << j << ") = "
-             << *(int*)intStash.fetch(j)
-             << endl;
+    {
+		tablicaint.AddNewElement(&i);
+	}
+	stoper.stopClock();
+	tablicaint.Print();
+	stoper.getElapsedTime();
     return 0;
 }

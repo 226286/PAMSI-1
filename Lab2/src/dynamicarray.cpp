@@ -1,65 +1,78 @@
 #include "../inc/dynamicarray.hh"
+#include <iostream>
+using namespace std;
 
-    //: C04:CppLib.cpp {O}
-    // C library converted to C++
-    // Declare structure and functions:
-    #include <iostream>
-    #include <cassert>
-    using namespace std;
-    // Quantity of elements to add
-    // when increasing storage:
-    const int increment = 10;
+const int increment = 10;
 
-    Stash::Stash(int sz, int initQuantity) {
-	  size = sz;
-	  quantity = 0;
-	  next = 0;
-	  storage = 0;
-	  inflate(initQuantity);
+DynamicArray::DynamicArray(int sz, int initialquantity)
+{
+	size = sz;
+	quantity = 0;
+	next = 0;
+	storage = 0;
+	EnlargeAnArray(initialquantity);
+}
+
+int DynamicArray::AddNewElement(void* element)
+{
+	if(next >= quantity)
+	{
+		EnlargeAnArray(increment);
 	}
+	int startbytes = next * size;
+	unsigned char* newelement = (unsigned char*)element;
+	for(int i = 0; i < size; i++)
+	{
+		storage[startbytes + i] = newelement[i];
+	}
+	next++;
+	return(next - 1);
+}
 
-    int Stash::add(void* element) {
-      if(next >= quantity) // Enough space left?
-        inflate(increment);
-      // Copy element into storage,
-      // starting at next empty space:
-      int startBytes = next * size;
-      unsigned char* e = (unsigned char*)element;
-      for(int i = 0; i < size; i++)
-        storage[startBytes + i] = e[i];
-      next++;
-      return(next - 1); // Index number
+void* DynamicArray::GetAnElement(int index)
+{
+	if(index >= next)
+	{
+		return 0;
+	}
+	else
+	{
+		return &(storage[index * size]);
+	}
+}
+
+int DynamicArray::NumberOfElements()
+{
+	return next;
+}
+
+void DynamicArray::EnlargeAnArray(int increase)
+{
+	int newquantity = quantity + increase;
+	int newbytes = newquantity * size;
+	int oldbytes = quantity * size;
+	unsigned char* newstorage = new unsigned char[newbytes];
+	for(int i = 0; i < oldbytes; i++)
+	{
+		newstorage[i] = storage[i];
+	}
+	delete []storage;
+	storage = newstorage;
+	quantity = newquantity;
+}
+
+void DynamicArray::Print()
+{
+	for(int i = 0; i < NumberOfElements(); i++)
+	{
+		cout << *(int*)GetAnElement(i) << endl;
     }
+}
 
-    void* Stash::fetch(int index) {
-      // Check index boundaries:
-      //assert(0 <= index);
-      if(index >= next)
-        return 0; // To indicate the end
-      // Produce pointer to desired element:
-      return &(storage[index * size]);
-    }
-
-    int Stash::count() {
-      return next; // Number of elements in CStash
-    }
-
-    void Stash::inflate(int increase) {
-      //assert(increase > 0);
-      int newQuantity = quantity + increase;
-      int newBytes = newQuantity * size;
-      int oldBytes = quantity * size;
-      unsigned char* b = new unsigned char[newBytes];
-      for(int i = 0; i < oldBytes; i++)
-        b[i] = storage[i]; // Copy old to new
-      delete []storage; // Old storage
-      storage = b; // Point to new memory
-      quantity = newQuantity;
-    }
-
-    Stash::~Stash() {
-      if(storage != 0) {
-        cout << "freeing storage" << endl;
-        delete []storage;
-      }
-    } ///:~
+DynamicArray::~DynamicArray()
+{
+	if(storage != 0)
+	{
+		delete []storage;
+	}
+}
