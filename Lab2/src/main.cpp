@@ -14,6 +14,7 @@ int main()
 {
 	TimeCounter stoper;
 	DynamicArray tablicaint(sizeof(int));
+	int n = 100000;
 	long pomiary[10];
 	ofstream file;
 	
@@ -22,7 +23,7 @@ int main()
 		stoper.startClock();
 		
 	// zwiekszanie tablicy o 1
-		for(int i = 0; i < 1000; i++)
+		for(int i = 0; i < n; i++)
 		{
 			tablicaint.AddNewElement(&i, increment);
 		}
