@@ -5,8 +5,8 @@ int partition(int array[], int p, int r)
 {
 	int x = array[p];
 	int i=0, j=0;
-	for (i = p-1; array[i] >= x; i++){}
-	for (j = r+1; array[j] <= x; j--){}
+	for (i = p; array[i] < x; i++){}
+	for (j = r; array[j] > x; j--){}
 	if(i < j)
 		{
 			int tmp = array[i];
