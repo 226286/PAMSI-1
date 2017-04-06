@@ -3,12 +3,6 @@
 using namespace std;
 
 
-IContainer::IContainer(){
-}
-
-IContainer::~IContainer(){
-}
-
 IContainer::Add(){
 }
 

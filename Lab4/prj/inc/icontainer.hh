@@ -15,12 +15,10 @@ class IContainer
 {
 
 public:
-	IContainer();
-	~IContainer();
-	void Add(int element);
-	int Find(int *element);
-	void* Get(int element);
-	int Size();
+	virtual void Add(int element);
+	virtual int Find(int *element);
+	virtual void* Get(int element);
+	virtual int Size();
 };
 
 

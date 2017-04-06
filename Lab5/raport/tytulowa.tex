@@ -1,0 +1,50 @@
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{tikz}
+\usetikzlibrary{decorations.fractals}
+
+
+\newcommand{\fract}[1]{
+    \begin{center}
+        \tikz [
+            decoration = #1
+        ] \draw 
+        		decorate{ decorate{ decorate{ (-8.5, 0) -- (-5.1, 0) }}}
+        		decorate{ decorate{ decorate{ (-5.1, 0) -- (-1.7, 0) }}}
+        		decorate{ decorate{ decorate{ (-1.7, 0) -- (1.7, 0) }}}
+        		decorate{ decorate{ decorate{ (1.7, 0) -- (5.1, 0) }}}
+        		decorate{ decorate{ decorate{ (5.1, 0) -- (8.5, 0) }}};
+    \end{center}
+}
+
+
+\renewcommand{\maketitle}{\begin{titlepage}
+
+\begin{center}
+%\includegraphics[scale=1]{logo.png}
+\vspace*{3cm}
+\fract {Koch curve type 1}
+\noindent \rule{\linewidth}{0.4mm}
+\vspace*{0.5cm}
+
+\LARGE \textsc{Raport}\\
+\Large \textsc{Laboratorium 5}\\
+
+\vspace*{0.5cm}
+\large \textsc{Projektowanie Algorytmów i Metody Sztucznej Inteligencji}
+
+\vspace*{0.5cm}
+\rule{\linewidth}{0.4mm}
+\vspace*{2cm}
+
+\Large\textsc{Anna Postawka} \\ % W tym miejscu należy zamieścić 
+\large\textsc{218556}\\ % listę członków zespołu projektowego
+
+\vspace*{7cm}
+%\textsc{Koło Naukowe Robotyków KoNaR }\\
+%\textsc{\url{www.konar.pwr.edu.pl}}\\
+\textsc{\today}\\
+\end{center}
+\end{titlepage}
+\newpage
+}
