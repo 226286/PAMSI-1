@@ -8,3 +8,10 @@
 + przygotowany Makefile
 
 Ocena: 2.0
+
+Powtórne sprawdzenie
+
+- brak pomiarow dla wersji z podwajaniem
++ poprawione uwagi z wczesniejszego sprawdzenia
+
+Ocena: 4
