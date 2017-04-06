@@ -1,8 +1,8 @@
-#ifndef TimeCounter_HH
-#define TimeCounter_HH
+#ifndef ITimeCounter_HH
+#define ITimeCounter_HH
 
 
-class TimeCounter
+class ITimeCounter
 {
 	private:
 		long start;
