@@ -3,13 +3,13 @@
 
 /*!
 * \file
-* \brief Definicja klasy IStack
+* \brief Definicja interfejsu IStack
 *
-* Plik zawiera definicję klasy IStack, która
+* Plik zawiera definicję interfejsu IStack, który
 * dziedziczy po IContainer.
 */
 
-#include "../inc/icontainer.hh"
+#include "icontainer.hh"
 
 
 /*!
@@ -19,11 +19,9 @@ class IStack : public IContainer
 {
 
 public:
-	IStack();
-	~IStack();
-	Top();
-	Push();
-	Pop();
+	virtual void Top() = 0;
+	virtual void Push() = 0;
+	virtual void Pop() = 0;
 };
 
 

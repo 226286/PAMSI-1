@@ -3,26 +3,27 @@
 
 /*!
 * \file
-* \brief Definicja klasy IList
+* \brief Definicja interfejsu IList
 *
-* Plik zawiera definicję klasy IList, która
+* Plik zawiera definicję interfejsu IList, który
 * dziedziczy po IContainer.
 */
 
-#include "../inc/icontainer.hh"
+#include "icontainer.hh"
 
 
 /*!
 * \brief Modeluje pojęcie listy dwukierunkowej.
 */
-class IList : public IContainer
+class IList : IContainer
 {
-
 public:
-	IList();
-	~IList();
-	Next();
-	Prev();
+	virtual void Add(int element) = 0;
+	virtual int Find(int *element) = 0;
+	virtual void* Get(int element) = 0;
+	virtual int Size() = 0;
+	virtual void Next() = 0;
+	virtual void Prev() = 0;
 };
 
 

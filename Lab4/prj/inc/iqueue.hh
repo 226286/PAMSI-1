@@ -3,27 +3,24 @@
 
 /*!
 * \file
-* \brief Definicja klasy IQueue
+* \brief Definicja interfejsu IQueue
 *
-* Plik zawiera definicję klasy IQueue, która
+* Plik zawiera definicję interfejsu IQueue, który
 * dziedziczy po IContainer.
 */
 
-#include "../inc/icontainer.hh"
+#include "icontainer.hh"
 
 
 /*!
 * \brief Modeluje pojęcie kolejki.
 */
-class IQueue : public IContainer
+class IQueue : IContainer
 {
-
 public:
-	IQueue();
-	~IQueue();
-	End();
-	Push();
-	Pop();
+	virtual void End() = 0;
+	virtual void Push() = 0;
+	virtual void Pop() = 0;
 };
 
 

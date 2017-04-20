@@ -3,12 +3,12 @@
 #include <sys/time.h>
 #include <ctime>
 #include <cstdlib>
-#include "../inc/itimecounter.hh"
+#include "../inc/timecounter.hh"
 
 using namespace std;
 
 
-void ITimeCounter::startClock()
+void TimeCounter::startClock()
 {
 	struct timeval timeofday;
 	
@@ -22,7 +22,7 @@ void ITimeCounter::startClock()
 	start=realtime;
 }
 
-void ITimeCounter::stopClock()
+void TimeCounter::stopClock()
 {
 	struct timeval timeofday;
 
@@ -36,12 +36,12 @@ void ITimeCounter::stopClock()
 	stop=realtime;
 }
 
-long ITimeCounter::getElapsedTime()
+long TimeCounter::getElapsedTime()
 {
 	return (stop-start);
 }
 
-void ITimeCounter::printElapsedTime()
+void TimeCounter::printElapsedTime()
 {
 	cout<<endl<<"czas [s]: "<<getElapsedTime()/1000.0<<endl;
 }

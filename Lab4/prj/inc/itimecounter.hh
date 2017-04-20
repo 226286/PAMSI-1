@@ -4,14 +4,11 @@
 
 class ITimeCounter
 {
-	private:
-		long start;
-		long stop;
 	public:
-		void startClock();
-		void stopClock();
-		long getElapsedTime();	
-		void printElapsedTime();
+		virtual void startClock() = 0;
+		virtual void stopClock() = 0;
+		virtual long getElapsedTime() = 0;	
+		virtual void printElapsedTime() = 0;
 };
 
 #endif

@@ -3,7 +3,7 @@
 
 /*!
 * \file
-* \brief Definicja klasy IContainer
+* \brief Definicja interfejsu IContainer
 */
 
 
@@ -13,12 +13,11 @@
 */
 class IContainer
 {
-
 public:
-	virtual void Add(int element);
-	virtual int Find(int *element);
-	virtual void* Get(int element);
-	virtual int Size();
+	virtual void Add(int element) = 0;
+	virtual int Find(int *element) = 0;
+	virtual void* Get(int element) = 0;
+	virtual int Size() = 0;
 };
 
 
