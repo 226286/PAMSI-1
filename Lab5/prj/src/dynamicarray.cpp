@@ -92,3 +92,16 @@ DynamicArray::~DynamicArray()
 		delete []storage;
 	}
 }
+
+/*
+DynamicArray::virtual void run();
+{
+	AddNewElement()
+	
+	
+	while (next < desired_size) {
+		if (isFull())
+			increaseSize();
+		elements[index++] = 123;
+	}
+*/

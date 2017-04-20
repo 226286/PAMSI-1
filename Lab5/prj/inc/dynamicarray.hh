@@ -1,7 +1,10 @@
 #ifndef DynamicArray_HH
 #define DynamicArray_HH
 
-class DynamicArray 
+#include "irunnable.hh"
+
+
+class DynamicArray: public IRunnable 
 {
 private:
 	int size;					// Size of each space
@@ -10,6 +13,9 @@ private:
     unsigned char* storage;		// Dynamically allocated array of bytes
     void EnlargeAnArray(int increase);
     void ReduceAnArray(int descrease);
+protected:
+	virtual void prepare() {};
+	virtual void run() {};
 public:
     DynamicArray(int size, int initialquantity = 0);
     ~DynamicArray();
