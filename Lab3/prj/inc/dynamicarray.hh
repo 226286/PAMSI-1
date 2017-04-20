@@ -9,7 +9,6 @@ private:
     int next;					// Next empty space
     unsigned char* storage;		// Dynamically allocated array of bytes
     void EnlargeAnArray(int increase);
-    //void ReduceAnArray(int descrease);
 public:
     DynamicArray(int size, int initialquantity = 0);
     ~DynamicArray();
